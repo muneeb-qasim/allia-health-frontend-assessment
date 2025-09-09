@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-sans);
+  --font-primary: var(--font-noto-sans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +22,735 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans), 'Noto Sans', system-ui, sans-serif;
+}
+
+/* Force Noto Sans on all elements */
+* {
+  font-family: var(--font-noto-sans), 'Noto Sans', system-ui, sans-serif !important;
+}
+
+/* Focus visible styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Ensure minimum touch target size */
+button, 
+[role="button"], 
+input[type="checkbox"], 
+input[type="radio"],
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Fix DatePicker clear icon alignment */
+.ant-picker-clear {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  right: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.ant-picker-clear .anticon {
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
+/* Ensure DatePicker input field has proper styling */
+.ant-picker {
+  border-radius: 6px !important;
+  border: 1px solid #d1d5db !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+}
+
+.ant-picker:hover {
+  border-color: #3b82f6 !important;
+}
+
+.ant-picker-focused {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Custom Ant Design styling to match design */
+.ant-layout-sider {
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+.ant-menu {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ant-menu-item {
+  height: 44px !important;
+  line-height: 44px !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+  margin-bottom: 4px !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #f0fdfa !important;
+  color: #0d9488 !important;
+}
+
+.ant-menu-item:hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+}
+
+.ant-menu-submenu-title {
+  height: 44px !important;
+  line-height: 44px !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+  margin-bottom: 4px !important;
+}
+
+.ant-menu-submenu-title:hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title {
+  background-color: #f0fdfa !important;
+  color: #0d9488 !important;
+}
+
+.ant-menu-sub .ant-menu-item {
+  height: 40px !important;
+  line-height: 40px !important;
+  margin-left: 32px !important;
+  margin-bottom: 2px !important;
+}
+
+.ant-menu-sub .ant-menu-item-selected {
+  background-color: #f0fdfa !important;
+  color: #0d9488 !important;
+  border-left: 2px solid #0d9488 !important;
+  border-radius: 0 !important;
+}
+
+.ant-layout-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 16px 24px !important;
+  height: 64px !important;
+  line-height: 64px !important;
+}
+
+.ant-btn-primary {
+  background-color: #0d9488 !important;
+  border-color: #0d9488 !important;
+  height: 40px !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: #0f766e !important;
+  border-color: #0f766e !important;
+}
+
+.ant-input:not(.search-input) {
+  height: 40px !important;
+  border-radius: 8px !important;
+}
+
+.ant-input:not(.search-input):hover {
+  border-color: #3b82f6 !important;
+}
+
+.ant-input:not(.search-input):focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Search input specific styling - completely override ant-input styles */
+.search-input.ant-input,
+.search-input.ant-input:hover,
+.search-input.ant-input:focus,
+.search-input.ant-input:active {
+  height: 40px !important;
+  border-radius: 6px !important;
+  border: 1px solid #d1d5db !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #374151 !important;
+  background-color: #ffffff !important;
+  transition: all 0.2s ease-in-out !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+.search-input.ant-input:hover {
+  border-color: #9ca3af !important;
+  box-shadow: none !important;
+}
+
+.search-input.ant-input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+.search-input::placeholder {
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+}
+
+.search-input.ant-input .ant-input-prefix {
+  color: #6b7280 !important;
+  margin-right: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.search-input.ant-input .ant-input-suffix {
+  color: #6b7280 !important;
+  margin-left: 8px !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease-in-out !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.search-input.ant-input .ant-input-suffix:hover {
+  color: #374151 !important;
+}
+
+/* Force override any Ant Design internal styles that might cause double borders */
+.search-input.ant-input * {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.search-input.ant-input .ant-input-prefix,
+.search-input.ant-input .ant-input-suffix {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Additional override to prevent any wrapper borders */
+.ant-input-affix-wrapper.search-input {
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-input-affix-wrapper.search-input:hover {
+  border-color: #9ca3af !important;
+  box-shadow: none !important;
+}
+
+.ant-input-affix-wrapper.search-input:focus,
+.ant-input-affix-wrapper.search-input.ant-input-affix-wrapper-focused {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+/* Ensure the input wrapper doesn't have any conflicting styles */
+.search-input.ant-input-wrapper {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.search-input.ant-input-wrapper .ant-input {
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-btn {
+  height: 40px !important;
+  border-radius: 6px !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.ant-btn:hover {
+  border-color: #9ca3af !important;
+  color: #374151 !important;
+  background-color: #f9fafb !important;
+}
+
+.ant-btn:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+/* Sort and Filter button specific styling */
+.sort-button,
+.filter-button {
+  height: 40px !important;
+  border-radius: 6px !important;
+  border: 1px solid #d1d5db !important;
+  color: #374151 !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease-in-out !important;
+  background-color: #ffffff !important;
+}
+
+.sort-button:hover,
+.filter-button:hover {
+  border-color: #9ca3af !important;
+  color: #374151 !important;
+  background-color: #f9fafb !important;
+}
+
+.sort-button:focus,
+.filter-button:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+.sort-button .anticon,
+.filter-button .anticon {
+  font-size: 14px !important;
+  color: inherit !important;
+}
+
+.ant-tabs {
+  margin: 0 !important;
+}
+
+.ant-tabs-tab {
+  padding: 8px 16px !important;
+  height: 44px !important;
+  border-radius: 20px !important;
+  margin-right: 8px !important;
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.ant-tabs-tab-active {
+  background-color: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+.ant-tabs-tab:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+.ant-tabs-tab-active:hover {
+  background-color: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+.ant-table {
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #6b7280 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 12px 24px !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f3f4f6 !important;
+  padding: 16px 24px !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background-color: #f9fafb !important;
+}
+
+/* Custom TaskTable styling to match design */
+.task-table {
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.task-table .table-header {
+  background-color: #f3f4f6 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 16px 24px !important;
+  min-height: 48px !important;
+}
+
+.task-table .table-header .grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+  gap: 0 !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.task-table .table-header .grid > div {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #374151 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  line-height: 1.4 !important;
+  padding: 0 8px !important;
+}
+
+.task-table .assigned-to-header {
+  background-color: #f9fafb !important;
+  border-top: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 12px 24px !important;
+  min-height: 44px !important;
+}
+
+.task-table .assigned-to-header .flex {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.task-table .assigned-to-header .text-sm {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+  line-height: 1.4 !important;
+}
+
+.task-table .assigned-to-header .ant-avatar {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  border: none !important;
+}
+
+.task-table .assigned-to-header .ant-typography {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+.task-table .assigned-to-header .assigned-to-label {
+  font-weight: 700 !important;
+  color: #111827 !important;
+}
+
+.task-table .task-row {
+  border-bottom: 1px solid #f3f4f6 !important;
+  padding: 16px 24px !important;
+}
+
+.task-table .task-row:last-child {
+  border-bottom: none !important;
+}
+
+.task-table .task-row:hover {
+  background-color: #f9fafb !important;
+}
+
+.task-table .task-row .grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+  gap: 0 !important;
+  align-items: start !important;
+}
+
+.task-table .task-row .grid > div {
+  padding: 0 8px !important;
+}
+
+/* Tag Badge Styling */
+.tag-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  background-color: #f3f4f6 !important;
+  border-radius: 16px !important;
+  padding: 3px 10px !important;
+  border: none !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  min-height: 24px !important;
+}
+
+.tag-badge .tag-icon {
+  font-size: 9px !important;
+  color: #6b7280 !important;
+  margin-right: 1px !important;
+}
+
+.tag-badge .tag-text {
+  color: #374151 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+.tag-badge .tag-count {
+  color: #374151 !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  margin-left: 1px !important;
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+.no-tags {
+  color: #9ca3af !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+.tag-count-outside {
+  color: #374151 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-family: 'Noto Sans', sans-serif !important;
+  margin-left: 4px !important;
+}
+
+.ant-badge-count {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  border-radius: 10px !important;
+}
+
+.ant-avatar {
+  border-radius: 50% !important;
+}
+
+.ant-modal {
+  border-radius: 8px !important;
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid #e5e7eb !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.ant-modal-body {
+  padding: 24px !important;
+}
+
+.ant-form-item-label > label {
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+.ant-select {
+  height: 40px !important;
+}
+
+.ant-select-selector {
+  height: 40px !important;
+  border-radius: 6px !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: #3b82f6 !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Custom Select styling for Status dropdown */
+.task-table .ant-select {
+  background: transparent !important;
+  border: none !important;
+}
+
+.task-table .ant-select .ant-select-selector {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+.task-table .ant-select .ant-select-selection-item {
+  padding: 0 !important;
+  line-height: 1 !important;
+  position: relative !important;
+}
+
+/* Hide the default Ant Design arrow completely */
+.task-table .ant-select .ant-select-arrow {
+  display: none !important;
+}
+
+/* Priority Badge Styling */
+.priority-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  font-family: 'Noto Sans', sans-serif !important;
+}
+
+.priority-badge .priority-icon {
+  font-size: 12px !important;
+}
+
+.priority-badge .priority-icon.high {
+  color: #dc2626 !important;
+}
+
+.priority-badge .priority-icon.medium {
+  color: #ea580c !important;
+}
+
+.priority-badge .priority-icon.low {
+  color: #1e40af !important;
+}
+
+/* Status Badge Styling - Updated to match design exactly */
+.status-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+  border-radius: 16px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  border: none !important;
+  font-family: 'Noto Sans', sans-serif !important;
+  min-height: 28px !important;
+  min-width: 70px !important;
+  text-align: center !important;
+}
+
+.status-badge .status-text {
+  flex: 1 !important;
+  text-align: center !important;
+  font-weight: 400 !important;
+}
+
+.status-badge.todo {
+  background-color: #fef3c7 !important;
+  color: #d97706 !important;
+}
+
+.status-badge.in-progress {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+.status-badge.in-review {
+  background-color: #fce7f3 !important;
+  color: #be185d !important;
+}
+
+.status-badge.done {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+.status-badge .status-chevron {
+  font-size: 12px !important;
+  margin-left: 6px !important;
+  flex-shrink: 0 !important;
+  color: inherit !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Loading state for task rows */
+.task-row.loading {
+  background-color: #f0f9ff !important;
+  border-left: 3px solid #3b82f6 !important;
+}
+
+.task-row.loading .status-badge {
+  opacity: 0.8 !important;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.anticon-loading {
+  animation: spin 1s linear infinite !important;
+}
+
+.create-task-modal .ant-modal-body {
+  padding: 0 !important;
 }
