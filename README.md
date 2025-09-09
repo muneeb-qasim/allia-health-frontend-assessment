@@ -131,34 +131,10 @@ allia-health-frontend-assessment/
 
 ## Key Components
 
-### TaskTable
-
-- Displays tasks in a responsive table format
-- Inline status editing with optimistic updates
-- Avatar images with fallback support
-- Sorting and filtering capabilities
-- Loading states with skeleton UI
-
-### TaskFilters
-
-- Search functionality with debounced input
-- Tab-based filtering (All, Assigned to me, Created by me)
-- Sort controls for date and priority
-- Real-time result counts
-
-### CreateTaskModal
-
-- Form validation with error handling
-- Tag management with keyboard shortcuts
-- User assignment with dropdown selection
-- Date validation to prevent past due dates
-
-### TaskChart
-
-- Pie charts for status and priority distribution
-- Interactive tooltips and legends
-- Responsive design with proper accessibility
-- Empty state handling
+- **TaskTable**: Responsive table with inline status editing, optimistic updates, avatars, sorting/filtering, skeleton loading
+- **TaskFilters**: Debounced search, tab filtering (All/Assigned/Created), date/priority sorting, real-time counts
+- **CreateTaskModal**: Form validation, tag management, user assignment, date validation
+- **TaskChart**: Pie charts for status/priority distribution, interactive tooltips, responsive design, empty states
 
 ## API Simulation
 
@@ -213,263 +189,74 @@ The application uses Zustand for state management with the following key feature
 
 ### Technical Assumptions
 
-1. **Current User Context**:
-
-   - Hardcoded to "Amie Leighton" (user ID: u1) for filtering "assigned to me" tasks
-   - No authentication system - assumes single user context for demo purposes
-
-2. **Data Management**:
-
-   - Tasks are loaded from static JSON file (`public/tasks.json`)
-   - No persistent storage - changes don't survive page refreshes
-   - Mock API simulates 12.5% failure rate for testing error handling
-   - Network latency simulated between 600-1200ms
-
-3. **User Interface**:
-
-   - Avatar fallbacks use UI Avatars service for missing profile pictures
-   - All dates are in ISO 8601 format
-   - Task IDs are generated client-side using timestamp-based approach
-   - Assumes modern browser with JavaScript enabled
-
-4. **Healthcare Context**:
-   - Patient codes follow format "PT-XXX" (3-digit number)
-   - Task priorities: low, medium, high
-   - Task statuses: todo, in_progress, in_review, done
-   - Tags are free-form strings without predefined categories
+- **User Context**: Hardcoded to "Amie Leighton" (u1) - no authentication system
+- **Data Source**: Static JSON file (`public/tasks.json`) with no persistent storage
+- **API Simulation**: 12.5% failure rate, 600-1200ms latency for testing
+- **Healthcare Format**: Patient codes "PT-XXX", priorities (low/medium/high), statuses (todo/in_progress/in_review/done)
+- **Browser**: Modern browser with JavaScript enabled, ISO 8601 dates, client-side task IDs
 
 ### Current Limitations
 
-1. **Data Persistence**:
-
-   - No database integration
-   - Changes are not saved between sessions
-   - No data backup or recovery mechanisms
-
-2. **User Management**:
-
-   - No authentication or authorization system
-   - No user roles or permissions
-   - No user profile management
-
-3. **Real-time Features**:
-
-   - No WebSocket or real-time synchronization
-   - No live collaboration features
-   - No push notifications
-
-4. **Advanced Features**:
-
-   - No file uploads or document attachments
-   - No offline support or service workers
-   - No bulk operations or batch processing
-   - No audit trail or change history
-
-5. **Integration**:
-   - No external API integrations
-   - No healthcare system connections (EMR, scheduling, etc.)
-   - No third-party service integrations
+- **Data Persistence**: No database, changes don't survive page refreshes, no backup/recovery
+- **User Management**: No authentication, authorization, user roles, or profile management
+- **Real-time Features**: No WebSocket, live collaboration, or push notifications
+- **Advanced Features**: No file uploads, offline support, bulk operations, or audit trails
+- **Integration**: No external APIs, healthcare system connections (EMR, scheduling), or third-party services
 
 ## Next Steps
 
-### Immediate Development Priorities
+### High Priority
 
-1. **Backend Integration** (High Priority)
+- **Backend Integration**: Replace mock API with real backend, database, data persistence
+- **Authentication**: User auth system, RBAC, user management, security
+- **Healthcare Integration**: EMR integration, patient scheduling, HIPAA compliance
+- **Production Readiness**: CI/CD pipeline, comprehensive testing, monitoring
+- **Testing Strategy**: Unit, integration, e2e tests, performance testing
 
-   - Replace mock API with real backend services
-   - Implement proper database schema and migrations
-   - Add data persistence and CRUD operations
-   - Set up proper error handling and logging
+### Medium Priority
 
-2. **Authentication & Authorization** (High Priority)
+- **Data Management**: Data validation, backup/recovery, import/export, audit logging
+- **Real-time Features**: WebSocket connections, live updates, collaboration
+- **Advanced Task Management**: Bulk operations, templates, dependencies, workflows
+- **Mobile & Accessibility**: PWA features, mobile optimization, enhanced accessibility
+- **Scalability**: Caching, load balancing, database optimization
+- **Code Quality**: TypeScript types, code coverage, automated formatting
 
-   - Implement user authentication system
-   - Add role-based access control (RBAC)
-   - Create user management interface
-   - Add session management and security
+### Low Priority
 
-3. **Data Management** (Medium Priority)
-   - Implement proper data validation
-   - Add data backup and recovery
-   - Create data import/export functionality
-   - Add audit logging for all changes
-
-### Feature Enhancements
-
-4. **Real-time Collaboration** (Medium Priority)
-
-   - Implement WebSocket connections
-   - Add live task updates and notifications
-   - Create real-time user presence indicators
-   - Add collaborative editing features
-
-5. **Advanced Task Management** (Medium Priority)
-
-   - Add bulk operations (bulk status updates, assignments)
-   - Implement task templates and recurring tasks
-   - Add task dependencies and workflows
-   - Create advanced filtering and search
-
-6. **Mobile & Accessibility** (Medium Priority)
-   - Optimize for mobile devices
-   - Add Progressive Web App (PWA) features
-   - Enhance accessibility compliance
-   - Add keyboard shortcuts and navigation
-
-### Healthcare-Specific Features
-
-7. **Healthcare Integration** (High Priority)
-
-   - Integrate with Electronic Medical Records (EMR)
-   - Connect with patient scheduling systems
-   - Add HIPAA compliance features
-   - Implement healthcare-specific workflows
-
-8. **Advanced Analytics** (Low Priority)
-   - Add performance metrics and KPIs
-   - Create custom dashboard widgets
-   - Implement data visualization improvements
-   - Add reporting and export capabilities
-
-### Infrastructure & DevOps
-
-9. **Production Readiness** (High Priority)
-
-   - Set up CI/CD pipeline
-   - Add comprehensive testing (unit, integration, e2e)
-   - Implement monitoring and alerting
-   - Add performance optimization
-
-10. **Scalability** (Medium Priority)
-    - Implement caching strategies
-    - Add load balancing and scaling
-    - Optimize database queries
-    - Add microservices architecture if needed
-
-### Development Workflow
-
-11. **Code Quality** (Medium Priority)
-
-    - Add comprehensive TypeScript types
-    - Implement code coverage reporting
-    - Add automated code formatting and linting
-    - Create development documentation
-
-12. **Testing Strategy** (High Priority)
-    - Add unit tests for all components
-    - Implement integration tests for API
-    - Create end-to-end tests for user flows
-    - Add performance testing
+- **Advanced Analytics**: Performance metrics, custom dashboards, reporting
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Port 3000 already in use**
-
-   ```bash
-   # Kill process using port 3000
-   npx kill-port 3000
-   # Or use a different port
-   npm run dev -- -p 3001
-   ```
-
-2. **Dependencies installation fails**
-
-   ```bash
-   # Clear npm cache
-   npm cache clean --force
-   # Delete node_modules and reinstall
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
-
-3. **Build errors**
-
-   ```bash
-   # Check for TypeScript errors
-   npx tsc --noEmit
-   # Run linting
-   npm run lint
-   ```
-
-4. **Tasks not loading**
-
-   - Ensure `public/tasks.json` exists and is valid JSON
-   - Check browser console for network errors
-   - Verify the file is accessible at `http://localhost:3000/tasks.json`
-
-5. **Styling issues**
-   - Ensure Tailwind CSS is properly configured
-   - Check if classes are being purged in production builds
-   - Verify PostCSS configuration
+- **Port 3000 in use**: `npx kill-port 3000` or `npm run dev -- -p 3001`
+- **Dependencies fail**: `npm cache clean --force` then `rm -rf node_modules package-lock.json && npm install`
+- **Build errors**: `npx tsc --noEmit` and `npm run lint`
+- **Tasks not loading**: Check `public/tasks.json` exists, browser console, verify `http://localhost:3000/tasks.json`
+- **Styling issues**: Verify Tailwind CSS config, check class purging, PostCSS setup
 
 ### Development Tips
 
-- Use browser dev tools to inspect network requests and API responses
-- Check the browser console for JavaScript errors
-- Use React DevTools for component debugging
-- Monitor the Network tab to see mock API delays and failures
+- Use browser dev tools for network requests, console for errors, React DevTools for debugging
+- Monitor Network tab for mock API delays and failures
 
 ## Contributing
 
-### Development Setup
+### Setup & Workflow
 
-1. **Fork and clone the repository:**
+1. Fork and clone repository
+2. `npm install` dependencies
+3. Create feature branch: `git checkout -b feature/your-feature-name`
+4. Make changes and test: `npm run dev`, `npm run lint`, `npm run build`
+5. Commit: `git commit -m "feat: add your feature description"`
+6. Push and create pull request
 
-   ```bash
-   git clone https://github.com/your-username/allia-health-frontend-assessment.git
-   cd allia-health-frontend-assessment
-   ```
+### Standards
 
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Create a feature branch:**
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-4. **Make your changes and test:**
-
-   ```bash
-   npm run dev
-   npm run lint
-   npm run build
-   ```
-
-5. **Commit your changes:**
-
-   ```bash
-   git add .
-   git commit -m "feat: add your feature description"
-   ```
-
-6. **Push and create a pull request:**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-### Code Standards
-
-- Follow TypeScript best practices
-- Use meaningful variable and function names
-- Add JSDoc comments for complex functions
-- Ensure all components are accessible
-- Write tests for new features
-- Follow the existing code style and patterns
-
-### Pull Request Guidelines
-
-- Provide a clear description of changes
-- Include screenshots for UI changes
-- Ensure all tests pass
-- Update documentation if needed
-- Keep PRs focused and atomic
+- **Code**: TypeScript best practices, meaningful names, JSDoc comments, accessibility
+- **Testing**: Write tests for new features, ensure all tests pass
+- **PRs**: Clear descriptions, screenshots for UI changes, focused and atomic
 
 ## License
 
